@@ -147,6 +147,8 @@ fun baseDirPath(context: Context, baseDirectory: BaseDirectory): String? {
     if (!useExternalStorage) {
         if (Build.VERSION.SDK_INT >= 26) {
             baseDirPath = when (baseDirectory) {
+                BaseDirectory.internalRoot -> Path("/storage/emulated/0").pathString
+
                 BaseDirectory.applicationDocuments -> Path(
                     context.dataDir.path, "app_flutter"
                 ).pathString
@@ -159,6 +161,7 @@ fun baseDirPath(context: Context, baseDirectory: BaseDirectory): String? {
             }
         } else {
             baseDirPath = when (baseDirectory) {
+                BaseDirectory.internalRoot -> Path("/storage/emulated/0").pathString
                 BaseDirectory.applicationDocuments -> "${context.dataDir.path}/app_flutter"
                 BaseDirectory.temporary -> context.cacheDir.path
                 BaseDirectory.applicationSupport -> context.filesDir.path

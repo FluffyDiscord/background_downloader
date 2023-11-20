@@ -104,7 +104,9 @@ enum BaseDirectory {
   /// As returned by getApplicationLibrary() on iOS. For other platforms
   /// this resolves to the subdirectory 'Library' created in the directory
   /// returned by getApplicationSupportDirectory()
-  applicationLibrary
+  applicationLibrary,
+
+  internalRoot
 }
 
 /// Type of updates requested for a task or group of tasks

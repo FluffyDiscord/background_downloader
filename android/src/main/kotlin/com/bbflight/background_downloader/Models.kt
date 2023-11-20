@@ -23,7 +23,8 @@ enum class BaseDirectory {
     applicationDocuments,  // getApplicationDocumentsDirectory()
     temporary,  // getTemporaryDirectory()
     applicationSupport, // getApplicationSupportDirectory()
-    applicationLibrary // getApplicationSupportDirectory() subdir "Library"
+    applicationLibrary, // getApplicationSupportDirectory() subdir "Library"
+    internalRoot // getApplicationSupportDirectory() subdir "Library"
 }
 
 /// Type of updates requested for a group of tasks
