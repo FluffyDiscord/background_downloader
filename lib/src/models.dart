@@ -420,6 +420,8 @@ sealed class Task extends Request implements Comparable {
         switch ((baseDirectory, Task.useExternalStorage)) {
       (BaseDirectory.applicationDocuments, false) =>
         await getApplicationDocumentsDirectory(),
+      (BaseDirectory.internalRoot, false) =>
+        Directory("/storage/emulated/0"),
       (BaseDirectory.temporary, false) => await getTemporaryDirectory(),
       (BaseDirectory.applicationSupport, false) =>
         await getApplicationSupportDirectory(),
@@ -429,6 +431,8 @@ sealed class Task extends Request implements Comparable {
       (BaseDirectory.applicationLibrary, false) => Directory(
           path.join((await getApplicationSupportDirectory()).path, 'Library')),
       // Android only: external storage variants
+      (BaseDirectory.internalRoot, true) =>
+        Directory("/storage/emulated/0"),
       (BaseDirectory.applicationDocuments, true) => externalStorageDirectory!,
       (BaseDirectory.temporary, true) => externalCacheDirectory!,
       (BaseDirectory.applicationSupport, true) =>

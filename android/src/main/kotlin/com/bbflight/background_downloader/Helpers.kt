@@ -177,6 +177,7 @@ fun baseDirPath(context: Context, baseDirectory: BaseDirectory): String? {
             return null
         }
         baseDirPath = when (baseDirectory) {
+            BaseDirectory.internalRoot -> Path("/storage/emulated/0").pathString
             BaseDirectory.applicationDocuments -> externalStorageDirectory.path
             BaseDirectory.temporary -> externalCacheDirectory.path
             BaseDirectory.applicationSupport -> "${externalStorageDirectory.path}/Support"
